@@ -1,7 +1,7 @@
 import { config } from "dotenv";
-import { defineConfig, env } from "prisma/config";
+import { defineConfig } from "prisma/config";
 
-// .env.local 파일을 먼저 로드
+// 로컬 개발 시 .env.local 로드 (Vercel에서는 환경 변수가 이미 설정됨)
 config({ path: ".env.local" });
 
 export default defineConfig({
@@ -10,6 +10,6 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: env("DATABASE_URL"),
+    url: process.env.DATABASE_URL!,
   },
 });
