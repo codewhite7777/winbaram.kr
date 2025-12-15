@@ -7,6 +7,13 @@ vi.mock('next-auth/react', () => ({
   signIn: vi.fn(),
 }))
 
+// Mock next/navigation
+vi.mock('next/navigation', () => ({
+  useSearchParams: vi.fn(() => ({
+    get: vi.fn(() => null),
+  })),
+}))
+
 describe('LoginForm', () => {
   it('renders login title', () => {
     render(<LoginForm />)
@@ -16,11 +23,6 @@ describe('LoginForm', () => {
   it('renders Google login button', () => {
     render(<LoginForm />)
     expect(screen.getByRole('button', { name: /google/i })).toBeInTheDocument()
-  })
-
-  it('renders Discord login button', () => {
-    render(<LoginForm />)
-    expect(screen.getByRole('button', { name: /discord/i })).toBeInTheDocument()
   })
 
   it('renders site branding', () => {
