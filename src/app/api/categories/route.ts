@@ -1,0 +1,19 @@
+import { NextResponse } from "next/server"
+import { prisma } from "@/lib/prisma"
+
+export async function GET() {
+  try {
+    const categories = await prisma.category.findMany({
+      where: { isActive: true },
+      orderBy: { order: "asc" },
+    })
+
+    return NextResponse.json(categories)
+  } catch (error) {
+    console.error("Failed to fetch categories:", error)
+    return NextResponse.json(
+      { error: "카테고리를 불러오는데 실패했습니다." },
+      { status: 500 }
+    )
+  }
+}
