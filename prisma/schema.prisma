@@ -1,0 +1,207 @@
+// Winbaram.kr Prisma Schema
+// 바람의 나라 커뮤니티 & 게임 운영 사이트
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ==================== 사용자 시스템 ====================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  nickname      String?   @unique
+  image         String?
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // OAuth 관계
+  accounts      Account[]
+  sessions      Session[]
+
+  // 콘텐츠 관계
+  posts         Post[]
+  comments      Comment[]
+
+  @@map("users")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+enum Role {
+  USER
+  MODERATOR
+  ADMIN
+  SUPER_ADMIN
+}
+
+// ==================== 게시판 시스템 ====================
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  posts       Post[]
+
+  @@map("categories")
+}
+
+model Post {
+  id          String    @id @default(cuid())
+  title       String
+  content     String    @db.Text
+  slug        String    @unique
+  viewCount   Int       @default(0)
+  isNotice    Boolean   @default(false)
+  isPublished Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  categoryId  String
+  category    Category  @relation(fields: [categoryId], references: [id])
+
+  comments    Comment[]
+
+  @@index([authorId])
+  @@index([categoryId])
+  @@map("posts")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  // 대댓글 지원
+  parentId  String?
+  parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies   Comment[] @relation("CommentReplies")
+
+  @@index([authorId])
+  @@index([postId])
+  @@map("comments")
+}
+
+// ==================== 공지사항 & 이벤트 ====================
+
+model Notice {
+  id          String      @id @default(cuid())
+  title       String
+  content     String      @db.Text
+  type        NoticeType  @default(NOTICE)
+  isPinned    Boolean     @default(false)
+  isPublished Boolean     @default(true)
+  startDate   DateTime?
+  endDate     DateTime?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("notices")
+}
+
+enum NoticeType {
+  NOTICE      // 공지사항
+  EVENT       // 이벤트
+  UPDATE      // 업데이트
+  MAINTENANCE // 점검
+}
+
+// ==================== 게임 서버 상태 ====================
+
+model ServerStatus {
+  id           String       @id @default(cuid())
+  name         String
+  status       ServerState  @default(ONLINE)
+  playerCount  Int          @default(0)
+  maxPlayers   Int          @default(1000)
+  lastChecked  DateTime     @default(now())
+
+  @@map("server_status")
+}
+
+enum ServerState {
+  ONLINE
+  OFFLINE
+  MAINTENANCE
+}
+
+// ==================== 랭킹 ====================
+
+model Ranking {
+  id          String      @id @default(cuid())
+  type        RankingType
+  playerName  String
+  value       Int
+  rank        Int
+  updatedAt   DateTime    @updatedAt
+
+  @@unique([type, playerName])
+  @@index([type, rank])
+  @@map("rankings")
+}
+
+enum RankingType {
+  LEVEL
+  PVP
+  GUILD
+  WEALTH
+}
