@@ -14,8 +14,8 @@ function createPrismaClient() {
   const connectionString = process.env.DATABASE_URL
 
   if (!connectionString) {
-    // 빌드 시점에는 DB 연결 없이 진행
-    return new PrismaClient() as PrismaClient
+    // 빌드 시점에는 에러를 던지지 않고 나중에 lazy하게 생성
+    throw new Error("DATABASE_URL is not set")
   }
 
   const pool = new Pool({ connectionString })
@@ -24,6 +24,25 @@ function createPrismaClient() {
   return new PrismaClient({ adapter })
 }
 
-export const prisma = globalForPrisma.prisma ?? createPrismaClient()
+function getPrismaClient() {
+  if (globalForPrisma.prisma) {
+    return globalForPrisma.prisma
+  }
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma
+  try {
+    const client = createPrismaClient()
+    if (process.env.NODE_ENV !== "production") {
+      globalForPrisma.prisma = client
+    }
+    return client
+  } catch {
+    // 빌드 시점에는 null 반환하지 않고 proxy 사용
+    return new Proxy({} as PrismaClient, {
+      get() {
+        throw new Error("DATABASE_URL is not set")
+      }
+    })
+  }
+}
+
+export const prisma = getPrismaClient()
