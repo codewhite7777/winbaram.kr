@@ -30,58 +30,85 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 게임 스크린샷 갤러리 */}
+      {/* 구버전 게임 스크린샷 갤러리 */}
       <section className="bg-white rounded-lg border border-amber-200 p-6 mb-6">
         <h2 className="text-xl font-bold text-amber-900 mb-4 flex items-center gap-2">
-          <span>🎮</span> 게임 화면
+          <span>🎮</span> 구버전 게임 화면 (4.65 / 5.50)
         </h2>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200">
+        <p className="text-sm text-amber-600 mb-4">
+          2003년 이전 구버전 바람의나라의 추억의 게임 화면입니다.
+        </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="https://lwi.nexon.com/baram/2020/0723_intro_286F3CA21F06734D/img_slide1_content.png"
-              alt="바람의나라 클래식 그래픽"
+              src="https://baramhyangky.com/img/slider/1.png"
+              alt="바람의나라 구버전 화면 1"
               fill
               className="object-cover"
               unoptimized
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-sm p-2 text-center">
-              클래식 그래픽 모드
+            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-2 text-center">
+              구버전 마을 풍경
             </div>
           </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200">
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="https://lwi.nexon.com/baram/2020/0723_intro_286F3CA21F06734D/img_slide2_content.png"
-              alt="바람의나라 와이드 화면"
+              src="https://baramhyangky.com/img/slider/2.png"
+              alt="바람의나라 구버전 화면 2"
               fill
               className="object-cover"
               unoptimized
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-sm p-2 text-center">
-              와이드 해상도 지원
+            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-2 text-center">
+              5.50 버전 플레이
             </div>
           </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200">
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="https://lwi.nexon.com/baram/2020/0723_intro_286F3CA21F06734D/img_slide3_content.png"
-              alt="바람의나라 게임 화면 3"
+              src="https://baramhyangky.com/img/slider/3.png"
+              alt="바람의나라 구버전 화면 3"
               fill
               className="object-cover"
               unoptimized
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-sm p-2 text-center">
-              구버전 그래픽 모드
+            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-2 text-center">
+              구버전 사냥터
             </div>
           </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200">
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="https://lwi.nexon.com/baram/2020/0723_intro_286F3CA21F06734D/img_slide4_content.png"
-              alt="바람의나라 게임 화면 4"
+              src="https://baramhyangky.com/img/slider/4.png"
+              alt="바람의나라 구버전 화면 4"
               fill
               className="object-cover"
               unoptimized
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-sm p-2 text-center">
-              고해상도 지원
+            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-2 text-center">
+              추억의 인터페이스
+            </div>
+          </div>
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
+            <Image
+              src="https://baramhyangky.com/img/slider/5.png"
+              alt="바람의나라 구버전 화면 5"
+              fill
+              className="object-cover"
+              unoptimized
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-2 text-center">
+              4.65 버전 그래픽
+            </div>
+          </div>
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
+            <Image
+              src="https://baramhyangky.com/img/slider/6.png"
+              alt="바람의나라 구버전 화면 6"
+              fill
+              className="object-cover"
+              unoptimized
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-2 text-center">
+              클래식 바람의나라
             </div>
           </div>
         </div>
