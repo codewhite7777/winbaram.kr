@@ -41,11 +41,10 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="https://upload.inven.co.kr/upload/2013/01/09/bbs/i0521608456.jpg"
+              src="/images/about/baram4_01.jpg"
               alt="바람의나라 4버전 스크린샷"
               fill
               className="object-cover"
-              unoptimized
             />
             <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs p-2 text-center">
               4버전 인게임 화면
@@ -53,11 +52,10 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="https://upload.inven.co.kr/upload/2013/01/09/bbs/i0693616786.jpg"
+              src="/images/about/baram4_02.jpg"
               alt="바람의나라 4버전 스크린샷"
               fill
               className="object-cover"
-              unoptimized
             />
             <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs p-2 text-center">
               4버전 게임 화면
