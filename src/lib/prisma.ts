@@ -1,5 +1,5 @@
 import { PrismaClient } from "../generated/prisma/client"
-import { neon } from "@neondatabase/serverless"
+import { Pool } from "@neondatabase/serverless"
 import { PrismaNeon } from "@prisma/adapter-neon"
 
 declare global {
@@ -7,16 +7,16 @@ declare global {
   var prismaClient: PrismaClient | undefined
 }
 
-function createPrismaClient(): PrismaClient {
-  const connectionString = process.env.DATABASE_URL
+const createPrismaClient = () => {
+  const databaseUrl = process.env.DATABASE_URL
 
-  if (!connectionString) {
-    throw new Error("DATABASE_URL environment variable is not set")
+  if (!databaseUrl) {
+    throw new Error("DATABASE_URL is required")
   }
 
-  const sql = neon(connectionString)
+  const pool = new Pool({ connectionString: databaseUrl })
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const adapter = new PrismaNeon(sql as any)
+  const adapter = new PrismaNeon(pool as any)
 
   return new PrismaClient({ adapter })
 }

@@ -2,9 +2,8 @@
 // 바람의 나라 커뮤니티 & 게임 운영 사이트
 
 generator client {
-  provider        = "prisma-client"
-  output          = "../src/generated/prisma"
-  previewFeatures = ["driverAdapters"]
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
