@@ -30,68 +30,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 공식 월페이퍼 갤러리 */}
+      {/* 4버전 스크린샷 갤러리 */}
       <section className="bg-white rounded-lg border border-amber-200 p-6 mb-6">
         <h2 className="text-xl font-bold text-amber-900 mb-4 flex items-center gap-2">
-          <span>🎨</span> 바람의나라 공식 일러스트
+          <span>🎮</span> 바람의나라 4버전 스크린샷
         </h2>
         <p className="text-sm text-amber-600 mb-4">
-          바람의나라 공식 홈페이지에서 제공하는 일러스트입니다.
+          2000년대 초반 바람의나라 4버전의 실제 게임 화면입니다.
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 gap-4">
           <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img73.jpg"
-              alt="바람의나라 일러스트"
+              src="https://upload.inven.co.kr/upload/2013/01/09/bbs/i0521608456.jpg"
+              alt="바람의나라 4버전 스크린샷"
               fill
               className="object-cover"
               unoptimized
             />
+            <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs p-2 text-center">
+              4버전 인게임 화면
+            </div>
           </div>
           <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img74.jpg"
-              alt="바람의나라 일러스트"
+              src="https://upload.inven.co.kr/upload/2013/01/09/bbs/i0693616786.jpg"
+              alt="바람의나라 4버전 스크린샷"
               fill
               className="object-cover"
               unoptimized
             />
-          </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
-            <Image
-              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img75.jpg"
-              alt="바람의나라 일러스트"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-          </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
-            <Image
-              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img70.jpg"
-              alt="바람의나라 일러스트"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-          </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
-            <Image
-              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img69.jpg"
-              alt="바람의나라 일러스트"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-          </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
-            <Image
-              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img68.jpg"
-              alt="바람의나라 일러스트"
-              fill
-              className="object-cover"
-              unoptimized
-            />
+            <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs p-2 text-center">
+              4버전 게임 화면
+            </div>
           </div>
         </div>
       </section>

@@ -38,6 +38,11 @@ const nextConfig: NextConfig = {
         hostname: "ssl.nexon.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "upload.inven.co.kr",
+        pathname: "/**",
+      },
     ],
   },
 };
