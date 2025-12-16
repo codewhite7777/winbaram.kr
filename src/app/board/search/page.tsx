@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma"
 import { PostList, SearchForm } from "@/components/board"
 import Link from "next/link"
+import { PageLayout } from "@/components/layout"
 
 type PageProps = {
   searchParams: Promise<{ q?: string; page?: string; category?: string }>
@@ -14,11 +15,11 @@ export default async function SearchPage({ searchParams }: PageProps) {
 
   if (!query) {
     return (
-      <div className="max-w-4xl mx-auto">
+      <PageLayout>
         <h1 className="text-2xl font-bold text-amber-900 mb-4">게시글 검색</h1>
         <SearchFormWrapper />
         <div className="mt-8 text-center text-gray-500">검색어를 입력하세요.</div>
-      </div>
+      </PageLayout>
     )
   }
 
@@ -54,7 +55,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
   }))
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <PageLayout>
       <h1 className="text-2xl font-bold text-amber-900 mb-4">검색 결과</h1>
 
       <SearchFormWrapper />
@@ -110,7 +111,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
           )}
         </>
       )}
-    </div>
+    </PageLayout>
   )
 }
 

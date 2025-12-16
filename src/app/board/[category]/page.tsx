@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma"
 import { PostList, Pagination } from "@/components/board"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { PageLayout } from "@/components/layout"
 
 type PageProps = {
   params: Promise<{ category: string }>
@@ -47,7 +48,7 @@ export default async function BoardCategoryPage({ params, searchParams }: PagePr
   }))
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <PageLayout>
       {/* 헤더 */}
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold text-amber-900">{category.name}</h1>
@@ -72,7 +73,7 @@ export default async function BoardCategoryPage({ params, searchParams }: PagePr
           />
         </div>
       )}
-    </div>
+    </PageLayout>
   )
 }
 

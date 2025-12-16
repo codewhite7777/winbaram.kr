@@ -1,9 +1,10 @@
 import { Suspense } from 'react'
 import { LoginForm } from './LoginForm'
+import { PageLayout } from "@/components/layout"
 
 function LoginLoading() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-amber-50">
+    <div className="flex items-center justify-center py-20">
       <div className="text-amber-600">로딩 중...</div>
     </div>
   )
@@ -11,8 +12,10 @@ function LoginLoading() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<LoginLoading />}>
-      <LoginForm />
-    </Suspense>
+    <PageLayout>
+      <Suspense fallback={<LoginLoading />}>
+        <LoginForm />
+      </Suspense>
+    </PageLayout>
   )
 }

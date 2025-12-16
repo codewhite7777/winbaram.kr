@@ -2,6 +2,7 @@ import { redirect } from "next/navigation"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import { NoticeForm } from "@/components/notice"
+import { PageLayout } from "@/components/layout"
 
 export const metadata = {
   title: "공지사항 작성 - 바람의 나라",
@@ -25,10 +26,8 @@ export default async function NoticeWritePage() {
   }
 
   return (
-    <div className="min-h-screen bg-amber-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        <NoticeForm />
-      </div>
-    </div>
+    <PageLayout>
+      <NoticeForm />
+    </PageLayout>
   )
 }

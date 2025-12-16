@@ -2,6 +2,7 @@ import { redirect, notFound } from "next/navigation"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import { NoticeForm } from "@/components/notice"
+import { PageLayout } from "@/components/layout"
 
 type PageProps = {
   params: Promise<{ id: string }>
@@ -49,10 +50,8 @@ export default async function NoticeEditPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-amber-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        <NoticeForm initialData={formattedNotice} isEdit />
-      </div>
-    </div>
+    <PageLayout>
+      <NoticeForm initialData={formattedNotice} isEdit />
+    </PageLayout>
   )
 }

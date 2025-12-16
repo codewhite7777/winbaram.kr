@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma"
 import { PostForm } from "@/components/board"
 import { auth } from "@/auth"
 import { redirect, notFound } from "next/navigation"
+import { PageLayout } from "@/components/layout"
 
 type PageProps = {
   params: Promise<{ category: string }>
@@ -30,9 +31,9 @@ export default async function WritePostPage({ params }: PageProps) {
   })
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <PageLayout>
       <PostForm categories={categories} categorySlug={categorySlug} />
-    </div>
+    </PageLayout>
   )
 }
 

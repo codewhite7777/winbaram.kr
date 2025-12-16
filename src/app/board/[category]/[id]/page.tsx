@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma"
 import { PostDetail } from "@/components/board"
 import { CommentListWrapper } from "./CommentListWrapper"
 import { notFound } from "next/navigation"
+import { PageLayout } from "@/components/layout"
 
 type PageProps = {
   params: Promise<{ category: string; id: string }>
@@ -51,10 +52,10 @@ export default async function PostDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <PageLayout>
       <PostDetail post={formattedPost} />
       <CommentListWrapper postId={postId} initialComments={comments} />
-    </div>
+    </PageLayout>
   )
 }
 

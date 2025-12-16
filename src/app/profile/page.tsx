@@ -2,6 +2,7 @@ import { redirect } from "next/navigation"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import { ProfileView } from "@/components/profile"
+import { PageLayout } from "@/components/layout"
 
 export const metadata = {
   title: "내 프로필 - 바람의 나라",
@@ -39,13 +40,13 @@ export default async function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-amber-50 py-8 px-4">
+    <PageLayout>
       <ProfileView
         user={{
           ...user,
           createdAt: user.createdAt.toISOString(),
         }}
       />
-    </div>
+    </PageLayout>
   )
 }

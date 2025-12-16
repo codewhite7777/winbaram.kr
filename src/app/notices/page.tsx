@@ -1,6 +1,7 @@
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import { NoticeList } from "@/components/notice"
+import { PageLayout } from "@/components/layout"
 
 export const metadata = {
   title: "공지사항 - 바람의 나라",
@@ -38,10 +39,8 @@ export default async function NoticesPage() {
   }))
 
   return (
-    <div className="min-h-screen bg-amber-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        <NoticeList notices={formattedNotices} showWriteButton={isAdmin} />
-      </div>
-    </div>
+    <PageLayout>
+      <NoticeList notices={formattedNotices} showWriteButton={isAdmin} />
+    </PageLayout>
   )
 }
