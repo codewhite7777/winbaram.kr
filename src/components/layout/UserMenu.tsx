@@ -18,18 +18,20 @@ export function UserMenu() {
   if (session?.user) {
     return (
       <div className="flex items-center gap-3">
-        {session.user.image && (
-          <Image
-            src={session.user.image}
-            alt={session.user.name || '프로필'}
-            width={32}
-            height={32}
-            className="rounded-full"
-          />
-        )}
-        <span className="text-sm text-amber-800">
-          {session.user.name || session.user.email}
-        </span>
+        <Link href="/profile" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          {session.user.image && (
+            <Image
+              src={session.user.image}
+              alt={session.user.name || '프로필'}
+              width={32}
+              height={32}
+              className="rounded-full"
+            />
+          )}
+          <span className="text-sm text-amber-800">
+            {session.user.name || session.user.email}
+          </span>
+        </Link>
         <button
           onClick={() => signOut({ callbackUrl: '/' })}
           className="px-3 py-1 text-sm text-amber-600 hover:text-amber-800 transition-colors"
