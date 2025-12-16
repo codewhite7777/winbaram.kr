@@ -2,15 +2,16 @@ import { PrismaClient } from "../generated/prisma/client"
 import { neon } from "@neondatabase/serverless"
 import { PrismaNeon } from "@prisma/adapter-neon"
 
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined
+declare global {
+  // eslint-disable-next-line no-var
+  var prismaClient: PrismaClient | undefined
 }
 
-function createPrismaClient() {
+function createPrismaClient(): PrismaClient {
   const connectionString = process.env.DATABASE_URL
 
   if (!connectionString) {
-    throw new Error("DATABASE_URL is not set")
+    throw new Error("DATABASE_URL environment variable is not set")
   }
 
   const sql = neon(connectionString)
@@ -20,24 +21,8 @@ function createPrismaClient() {
   return new PrismaClient({ adapter })
 }
 
-function getPrismaClient() {
-  if (globalForPrisma.prisma) {
-    return globalForPrisma.prisma
-  }
+export const prisma = global.prismaClient ?? createPrismaClient()
 
-  try {
-    const client = createPrismaClient()
-    if (process.env.NODE_ENV !== "production") {
-      globalForPrisma.prisma = client
-    }
-    return client
-  } catch {
-    return new Proxy({} as PrismaClient, {
-      get() {
-        throw new Error("DATABASE_URL is not set")
-      }
-    })
-  }
+if (process.env.NODE_ENV !== "production") {
+  global.prismaClient = prisma
 }
-
-export const prisma = getPrismaClient()
