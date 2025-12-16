@@ -1,13 +1,23 @@
 import Link from 'next/link'
 
-// 샘플 공지/이벤트 데이터
-const notices = [
-  { id: 1, type: '이벤트', title: '남북무한대전 이벤트!!!', date: '12/12/2001', isNew: true },
-  { id: 2, type: '공지', title: '바람의 나라 12월 7일 개인정액 이벤트 당첨자 발표', date: '12/11/2001', isNew: true },
-  { id: 3, type: '공지', title: '넥슨클럽을 이용한 비밀번호 찾기 안내', date: '12/10/2001', isNew: true },
-  { id: 4, type: '공지', title: '넥슨 해외 사용자 결제 서비스 오픈!!', date: '12/7/2001', isNew: false },
-  { id: 5, type: '이벤트', title: '5.11 패치 기념 오엑스 퀴즈 이벤트', date: '12/5/2001', isNew: false },
-]
+type Notice = {
+  id: string
+  title: string
+  type: string
+  isPinned: boolean
+  createdAt: string
+}
+
+type MainContentProps = {
+  notices?: Notice[]
+}
+
+const typeLabels: Record<string, string> = {
+  NOTICE: '공지',
+  EVENT: '이벤트',
+  UPDATE: '업데이트',
+  MAINTENANCE: '점검',
+}
 
 // 샘플 바람 이야기 데이터
 const stories = [
@@ -25,7 +35,18 @@ const tips = [
   { id: 1, title: '[공략] 용궁 던전 좌표 공개!!', author: '초록명' },
 ]
 
-export function MainContent() {
+export function MainContent({ notices = [] }: MainContentProps) {
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    const now = new Date()
+    const diffMs = now.getTime() - date.getTime()
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+
+    if (diffDays < 3) {
+      return { date: date.toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' }), isNew: true }
+    }
+    return { date: date.toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' }), isNew: false }
+  }
   return (
     <main className="flex-1 bg-amber-50/50 p-4 space-y-4">
       {/* 공지사항/이벤트 */}
@@ -39,20 +60,23 @@ export function MainContent() {
           </Link>
         </div>
         <ul className="space-y-1">
-          {notices.map((notice) => (
-            <li key={notice.id} className="flex items-center gap-2 text-sm">
-              {notice.isNew && (
-                <span className="text-xs text-red-500 font-bold">NEW!</span>
-              )}
-              <span className="text-xs px-1 bg-amber-100 text-amber-700 rounded">
-                {notice.type}
-              </span>
-              <Link href={`/notice/${notice.id}`} className="text-amber-900 hover:text-blue-600 truncate flex-1">
-                {notice.title}
-              </Link>
-              <span className="text-xs text-amber-500">{notice.date}</span>
-            </li>
-          ))}
+          {notices.map((notice) => {
+            const { date, isNew } = formatDate(notice.createdAt)
+            return (
+              <li key={notice.id} className="flex items-center gap-2 text-sm">
+                {isNew && (
+                  <span className="text-xs text-red-500 font-bold">NEW!</span>
+                )}
+                <span className="text-xs px-1 bg-amber-100 text-amber-700 rounded">
+                  {typeLabels[notice.type] || notice.type}
+                </span>
+                <Link href={`/notices/${notice.id}`} className="text-amber-900 hover:text-blue-600 truncate flex-1">
+                  {notice.title}
+                </Link>
+                <span className="text-xs text-amber-500">{date}</span>
+              </li>
+            )
+          })}
         </ul>
       </section>
 
