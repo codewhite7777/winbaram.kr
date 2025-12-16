@@ -7,27 +7,36 @@ declare global {
   var prismaClient: PrismaClient | undefined
 }
 
-function createPrismaClient(): PrismaClient {
-  const databaseUrl = process.env.DATABASE_URL
+function getDatabaseUrl(): string {
+  // Use bracket notation to prevent build-time replacement
+  const url = process.env["DATABASE_URL"]
 
-  if (!databaseUrl) {
-    throw new Error("DATABASE_URL is required")
+  if (!url) {
+    const envKeys = Object.keys(process.env).filter(k => k.includes("DATABASE") || k.includes("POSTGRES"))
+    throw new Error(
+      `DATABASE_URL is not set. Available DB-related env vars: [${envKeys.join(", ")}]. ` +
+      `NODE_ENV: ${process.env.NODE_ENV}`
+    )
   }
 
+  return url
+}
+
+function createPrismaClient(): PrismaClient {
+  const databaseUrl = getDatabaseUrl()
   const sql = neon(databaseUrl)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const adapter = new PrismaNeon(sql as any)
-
   return new PrismaClient({ adapter })
 }
 
-// Lazy initialization with Proxy to avoid build-time errors
+// Lazy initialization
 let prismaInstance: PrismaClient | null = null
 
 function getPrismaClient(): PrismaClient {
   if (!prismaInstance) {
     prismaInstance = global.prismaClient ?? createPrismaClient()
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env["NODE_ENV"] !== "production") {
       global.prismaClient = prismaInstance
     }
   }
