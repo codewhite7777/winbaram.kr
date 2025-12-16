@@ -1,5 +1,5 @@
 import { PrismaClient } from "../generated/prisma/client"
-import { Pool } from "@neondatabase/serverless"
+import { neon } from "@neondatabase/serverless"
 import { PrismaNeon } from "@prisma/adapter-neon"
 
 declare global {
@@ -7,22 +7,40 @@ declare global {
   var prismaClient: PrismaClient | undefined
 }
 
-const createPrismaClient = () => {
+function createPrismaClient(): PrismaClient {
   const databaseUrl = process.env.DATABASE_URL
 
   if (!databaseUrl) {
     throw new Error("DATABASE_URL is required")
   }
 
-  const pool = new Pool({ connectionString: databaseUrl })
+  const sql = neon(databaseUrl)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const adapter = new PrismaNeon(pool as any)
+  const adapter = new PrismaNeon(sql as any)
 
   return new PrismaClient({ adapter })
 }
 
-export const prisma = global.prismaClient ?? createPrismaClient()
+// Lazy initialization with Proxy to avoid build-time errors
+let prismaInstance: PrismaClient | null = null
 
-if (process.env.NODE_ENV !== "production") {
-  global.prismaClient = prisma
+function getPrismaClient(): PrismaClient {
+  if (!prismaInstance) {
+    prismaInstance = global.prismaClient ?? createPrismaClient()
+    if (process.env.NODE_ENV !== "production") {
+      global.prismaClient = prismaInstance
+    }
+  }
+  return prismaInstance
 }
+
+export const prisma = new Proxy({} as PrismaClient, {
+  get(_target, prop: keyof PrismaClient) {
+    const client = getPrismaClient()
+    const value = client[prop]
+    if (typeof value === "function") {
+      return value.bind(client)
+    }
+    return value
+  },
+})
