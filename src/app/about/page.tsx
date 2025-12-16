@@ -11,9 +11,9 @@ export default function AboutPage() {
     <PageLayout>
       {/* 히어로 섹션 */}
       <section className="relative bg-gradient-to-b from-amber-900 to-amber-800 rounded-lg overflow-hidden mb-8">
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-30">
           <Image
-            src="http://www.baraminside.com/data/editor/1802/2c119ae830b0ee08e629b2f828a71eb1_1519264118_06.jpg"
+            src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img71.jpg"
             alt="바람의나라 일러스트"
             fill
             className="object-cover"
@@ -30,64 +30,64 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 공식 일러스트 갤러리 */}
+      {/* 공식 월페이퍼 갤러리 */}
       <section className="bg-white rounded-lg border border-amber-200 p-6 mb-6">
         <h2 className="text-xl font-bold text-amber-900 mb-4 flex items-center gap-2">
           <span>🎨</span> 바람의나라 공식 일러스트
         </h2>
         <p className="text-sm text-amber-600 mb-4">
-          2000년경 바람의나라 공식 홈페이지에서 배포되었던 김진 작가님의 일러스트입니다.
+          바람의나라 공식 홈페이지에서 제공하는 일러스트입니다.
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-amber-200 shadow-md">
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="http://www.baraminside.com/data/editor/1802/2c119ae830b0ee08e629b2f828a71eb1_1519264118_7.jpg"
-              alt="바람의나라 일러스트 1"
+              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img73.jpg"
+              alt="바람의나라 일러스트"
               fill
               className="object-cover"
               unoptimized
             />
           </div>
-          <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-amber-200 shadow-md">
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="http://www.baraminside.com/data/editor/1802/2c119ae830b0ee08e629b2f828a71eb1_1519264119_64.jpg"
-              alt="바람의나라 일러스트 2"
+              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img74.jpg"
+              alt="바람의나라 일러스트"
               fill
               className="object-cover"
               unoptimized
             />
           </div>
-          <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-amber-200 shadow-md">
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="http://www.baraminside.com/data/editor/1802/2c119ae830b0ee08e629b2f828a71eb1_1519264120_41.jpg"
-              alt="바람의나라 일러스트 3"
+              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img75.jpg"
+              alt="바람의나라 일러스트"
               fill
               className="object-cover"
               unoptimized
             />
           </div>
-          <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-amber-200 shadow-md">
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="http://www.baraminside.com/data/editor/1802/2c119ae830b0ee08e629b2f828a71eb1_1519264121_34.jpg"
-              alt="바람의나라 일러스트 4"
+              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img70.jpg"
+              alt="바람의나라 일러스트"
               fill
               className="object-cover"
               unoptimized
             />
           </div>
-          <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-amber-200 shadow-md">
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="http://www.baraminside.com/data/editor/1802/2c119ae830b0ee08e629b2f828a71eb1_1519264121_91.jpg"
-              alt="바람의나라 일러스트 5"
+              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img69.jpg"
+              alt="바람의나라 일러스트"
               fill
               className="object-cover"
               unoptimized
             />
           </div>
-          <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-amber-200 shadow-md">
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="http://www.baraminside.com/data/editor/1802/2c119ae830b0ee08e629b2f828a71eb1_1519264122_83.jpg"
-              alt="바람의나라 일러스트 6"
+              src="https://ssl.nexon.com/s2/game/Baram/2016/renewal/wallpaper/wallpaper_img68.jpg"
+              alt="바람의나라 일러스트"
               fill
               className="object-cover"
               unoptimized
@@ -96,64 +96,28 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 구버전 인게임 화면 */}
+      {/* 원작 캐릭터 */}
       <section className="bg-white rounded-lg border border-amber-200 p-6 mb-6">
         <h2 className="text-xl font-bold text-amber-900 mb-4 flex items-center gap-2">
-          <span>🎮</span> 4버전 인게임 화면
+          <span>👑</span> 연과 무휼
         </h2>
         <p className="text-sm text-amber-600 mb-4">
-          1998년~2000년대 초반 바람의나라 4버전의 게임 화면입니다.
+          바람의나라 원작 만화의 주인공들입니다.
         </p>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
+        <div className="flex justify-center">
+          <div className="relative w-full max-w-md aspect-[4/3] rounded-lg overflow-hidden border border-amber-200 shadow-md">
             <Image
-              src="http://www.baraminside.com/data/editor/1803/5a8a21db61fd383aff41bcd8e8924f26_1521157910_09.jpg"
-              alt="부여성 초기 지도"
+              src="https://i.namu.wiki/i/CccGMYHd0JKIeSWIdL6BxbaJN23Ysjo15oQGUF2pqmFFQxveF-wEPZpHbSTAHBy4UH9TXbDcQxkjocUODNPPYbGle8OIST_atkHrBH7y1kWWKyXSMsetXBxyt7QkUBgVXxyhFMc7k-UAIsuLc67IXA.webp"
+              alt="연과 무휼"
               fill
-              className="object-cover"
+              className="object-contain bg-amber-50"
               unoptimized
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-2 text-center">
-              부여성 초기 모습
-            </div>
-          </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
-            <Image
-              src="http://www.baraminside.com/data/editor/1803/5a8a21db61fd383aff41bcd8e8924f26_1521157929_19.jpg"
-              alt="98년 부여성"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-2 text-center">
-              98년 부여성
-            </div>
-          </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
-            <Image
-              src="http://www.baraminside.com/data/editor/1803/5a8a21db61fd383aff41bcd8e8924f26_1521157977_86.jpg"
-              alt="부여성 지역"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-2 text-center">
-              부여성 지역
-            </div>
-          </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-amber-200 shadow-md">
-            <Image
-              src="http://www.baraminside.com/data/editor/1803/5a8a21db61fd383aff41bcd8e8924f26_1521158025_05.jpg"
-              alt="4버전 사냥터"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs p-2 text-center">
-              4버전 사냥터 추가
-            </div>
           </div>
         </div>
+        <p className="text-sm text-amber-700 mt-4 text-center">
+          대무신왕 무휼과 그의 차비 연 - 김진 작가의 역사 판타지 만화 원작
+        </p>
       </section>
 
       {/* 게임 소개 */}

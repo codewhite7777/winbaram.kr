@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
         hostname: "www.baraminside.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "ssl.nexon.com",
+        pathname: "/**",
+      },
     ],
   },
 };
