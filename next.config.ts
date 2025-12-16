@@ -13,6 +13,16 @@ const nextConfig: NextConfig = {
         hostname: "*.googleusercontent.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "lwi.nexon.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.namu.wiki",
+        pathname: "/**",
+      },
     ],
   },
 };
