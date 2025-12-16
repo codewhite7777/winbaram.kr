@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
         hostname: "baramhyangky.com",
         pathname: "/**",
       },
+      {
+        protocol: "http",
+        hostname: "www.baraminside.com",
+        pathname: "/**",
+      },
     ],
   },
 };
