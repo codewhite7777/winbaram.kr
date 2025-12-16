@@ -1,32 +1,29 @@
 import { PrismaClient } from "../generated/prisma/client"
-import { neon } from "@neondatabase/serverless"
-import { PrismaNeon } from "@prisma/adapter-neon"
+import { Pool } from "pg"
+import { PrismaPg } from "@prisma/adapter-pg"
 
 declare global {
   // eslint-disable-next-line no-var
   var prismaClient: PrismaClient | undefined
 }
 
-function getDatabaseUrl(): string {
-  // Use bracket notation to prevent build-time replacement
-  const url = process.env["DATABASE_URL"]
+function createPrismaClient(): PrismaClient {
+  const databaseUrl = process.env["DATABASE_URL"]
 
-  if (!url) {
-    const envKeys = Object.keys(process.env).filter(k => k.includes("DATABASE") || k.includes("POSTGRES"))
+  if (!databaseUrl) {
     throw new Error(
-      `DATABASE_URL is not set. Available DB-related env vars: [${envKeys.join(", ")}]. ` +
-      `NODE_ENV: ${process.env.NODE_ENV}`
+      `DATABASE_URL is not set. NODE_ENV: ${process.env["NODE_ENV"]}`
     )
   }
 
-  return url
-}
+  const pool = new Pool({
+    connectionString: databaseUrl,
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 10000,
+  })
 
-function createPrismaClient(): PrismaClient {
-  const databaseUrl = getDatabaseUrl()
-  const sql = neon(databaseUrl)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const adapter = new PrismaNeon(sql as any)
+  const adapter = new PrismaPg(pool)
   return new PrismaClient({ adapter })
 }
 
