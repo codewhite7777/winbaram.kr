@@ -1,9 +1,8 @@
 import { PageLayout } from "@/components/layout"
-import Link from "next/link"
 
 export const metadata = {
   title: "새소식 - 바람의 나라",
-  description: "바람의나라 게임 업데이트 및 새소식",
+  description: "바람의나라 역사와 주요 이벤트",
 }
 
 interface NewsItem {
@@ -19,56 +18,56 @@ interface NewsItem {
 const newsData: NewsItem[] = [
   {
     id: 1,
-    title: "2024년 하반기 업데이트 계획 안내",
-    date: "2024-11-14",
-    summary: "환골탈태2 대규모 업데이트가 3단계로 나누어 진행됩니다.",
+    title: "바람의나라 정식 서비스 시작",
+    date: "1996-04-05",
+    summary: "넥슨의 첫 번째 온라인 게임 '바람의나라'가 PC통신 천리안에서 정식 서비스를 시작했습니다.",
     content: [
-      "1차 (24년 12월): 마법 리밸런싱, 탐험일지 개편, 7차 지역 추가",
-      "2차 (25년 1월): 신규 강화 시스템, 8차 인도 지역 콘텐츠",
-      "3차 (25년 2월): 인도 후반 지역, 860레벨 사냥터 추가",
-      "지역 콘텐츠 확대: 지역 스토리 퀘스트, 필드 탐험 요소와 희귀 괴수, 필드 보스 등 추가",
-      "탐험일지 개편: 탐험과 사냥 기록 분리, 동일 서버 캐릭터 간 공유",
-      "전 직업 마법 리밸런싱: 승급 시점별 신규 마법, PvE/PvP 마법 분리",
-      "신규 강화 시스템: 짧은 주기로 성장을 경험하며 전투의 재미를 높이는 시스템 도입",
+      "김진 작가의 동명 만화 '바람의 나라'를 원작으로 개발",
+      "1994년 12월 기획 시작, 1995년 12월 25일 베타테스트 실시",
+      "PC통신 천리안을 통해 서비스 시작 (분당 요금제)",
+      "1996년 5월 유니텔 상용화, 10월 윈도우 2.0 버전 출시",
+      "1996년 11월 정액제 과금 도입 (월 4만원)",
+      "초기에는 월 수익 100만원에 불과했으나, 빠르게 성장",
+      "메리디안 59(1996년 9월)보다 먼저 상용화된 그래픽 MMORPG",
     ],
-    source: "바람의나라 공식",
-    sourceUrl: "https://baram.nexon.com/Notice/List/1/145035",
+    source: "넥슨컴퓨터박물관",
+    sourceUrl: "https://computermuseum.nexon.com/news/detail?id=312",
   },
   {
     id: 2,
-    title: "1월 9일(목) 환골탈태2 - 2차 업데이트",
-    date: "2025-01-09",
-    summary: "인도 지역 확대, 성좌 시스템 추가, 마법 태그 시스템 등 대규모 업데이트",
+    title: "바람의나라 해외 진출 - Nexus: The Kingdom of the Winds",
+    date: "1997-10-01",
+    summary: "국산 온라인 게임 최초로 해외(미국) 서비스를 시작했습니다.",
     content: [
-      "인도 지역 확대: 마하칼리의신전, 벵골깊은숲 등 신규 지역 추가",
-      "새로운 보스 여신마하칼리 등장 (영웅급 장비재련 재료 보상)",
-      "인도 지역 호박 획득량 상향",
-      "성좌 시스템 신규 추가: 7차 승급 이상 캐릭터로 넥슨ID 당 1회 입문 임무 완료 필요",
-      "마법 태그 시스템 추가",
-      "바람의원석 100개로 월정석 1개 교환 가능",
-      "타격/마력 흡수 상한 능력치 추가",
-      "재생효과 개편: 기본 회복 주기를 10초로 통일",
+      "영문판 'Nexus: The Kingdom of the Winds'로 미국 베타서비스 시작",
+      "1998년 7월 미국 현지 정식 상용화",
+      "대한민국 온라인 게임 중 처음으로 해외 진출",
+      "1997년 1월 인터넷 상용화, 3월 나우누리 상용화",
+      "같은 해 온라인 게임 최초 부부 탄생 (김종민, 전성아 커플)",
+      "백화검 출시, 무한대전장 개장 등 콘텐츠 확대",
+      "한국 온라인 게임 해외 진출의 시초가 됨",
     ],
-    source: "바람의나라 공식",
-    sourceUrl: "https://baram.nexon.com/Notice/List/1/145984",
+    source: "나무위키",
+    sourceUrl: "https://namu.wiki/w/바람의%20나라(게임)/역사",
   },
   {
     id: 3,
-    title: "1월 23일(목) 업데이트 내용 안내",
-    date: "2025-01-23",
-    summary: "마법 시스템 버그 수정, 장비 재련 보관함 확장, 설날 이벤트 시작",
+    title: "바람의나라 4.0 대규모 업데이트",
+    date: "1998-12-08",
+    summary: "인터페이스, 지역, NPC 등이 대대적으로 변경되어 현재까지 기억되는 바람의나라의 모습이 정립되었습니다.",
     content: [
-      "대련 중 성좌 효과 미적용 버그 수정",
-      "영술사 도깨비탈출 후 이동 버그 해결",
-      "요괴질주 사용 시 다른 이속 증가 효과가 해제되지 않도록 개선",
-      "장비 재련 보관함 최대 보유 개수 9,999개 → 10만개로 확장",
-      "물품배송함 등급별 정렬 기능 추가",
-      "설날육성패키지 판매 (1/23~1/29)",
-      "설행운복주머니 판매 (1/23~2/6)",
-      "설날 이벤트 패키지 복주머니 판매 (1/23~2/5)",
+      "마우스 조작 지원 추가 (기존 키보드 전용에서 변경)",
+      "새로운 직업 '도사' 추가",
+      "승급 시스템 도입",
+      "신규 인터페이스 적용",
+      "지역 및 NPC 대대적 변경",
+      "신수 마법 이펙트 추가",
+      "이후 많은 유저들이 기억하는 '바람의나라'의 기반이 됨",
+      "1998년 2월 문화체육부-전자신문사 '이달의 우수게임' 선정",
+      "1998년 연 매출 100억원 달성",
     ],
-    source: "바람의나라 공식",
-    sourceUrl: "https://baram.nexon.com/Notice/List/1/146094",
+    source: "나무위키",
+    sourceUrl: "https://namu.wiki/w/바람의%20나라(게임)/역사",
   },
 ]
 
@@ -78,7 +77,7 @@ export default function NewsPage() {
       {/* 헤더 */}
       <section className="bg-gradient-to-r from-amber-600 to-amber-500 rounded-lg p-6 mb-6 text-white">
         <h1 className="text-2xl font-bold mb-2">새소식</h1>
-        <p className="text-amber-100">바람의나라 최신 업데이트 및 이벤트 소식</p>
+        <p className="text-amber-100">바람의나라 초창기 역사와 주요 이벤트 (1996~1998)</p>
       </section>
 
       {/* 뉴스 목록 */}
@@ -135,18 +134,18 @@ export default function NewsPage() {
       {/* 더보기 링크 */}
       <div className="mt-8 text-center">
         <a
-          href="https://baram.nexon.com/Notice/List?noticeCode=5"
+          href="https://namu.wiki/w/바람의%20나라(게임)/역사"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
         >
-          공식 홈페이지에서 더 많은 소식 보기
+          바람의나라 전체 역사 보기
         </a>
       </div>
 
       {/* 안내 */}
       <p className="mt-4 text-center text-sm text-amber-500">
-        * 본 페이지의 정보는 넥슨 바람의나라 공식 홈페이지에서 발췌되었습니다.
+        * 본 페이지의 정보는 넥슨컴퓨터박물관, 나무위키 등에서 발췌되었습니다.
       </p>
     </PageLayout>
   )
